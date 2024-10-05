@@ -49,5 +49,5 @@
             </div>
         </div>
     </div>
-    <div class="px-4 sm:px-0 mt-4">{{ $this->users->links() }}</div>
+    <div class="px-4 sm:px-0 mt-4">{{ $this->users->links(data: ['scrollTo' => false]) }}</div>
 </div>

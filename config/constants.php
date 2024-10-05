@@ -21,51 +21,41 @@ return [
     ],
 
     'suppliers' => [
-        'Supplier 1',
-        'Supplier 2',
-        'Supplier 3',
-        'Supplier 4',
-        'Supplier 5',
+        'Trufflez',
+        'Wasak',
     ],
 
     'items' => [
         'categories' => [
-            'Category 1',
-            'Category 2',
-            'Category 3',
-            'Category 4',
-            'Category 5',
+            'NON FOOD',
+            'Food items',
+            'Production',
+            'ZNon Food',
+            'Packaging',
         ],
 
         'units' => [
-            'Unit 1',
-            'Unit 2',
-            'Unit 3',
-            'Unit 4',
-            'Unit 5',
-
+            'Grams',
+            'ML',
+            'Pcs',
         ],
     ],
 
     'recipes' => [
         'categories' => [
-            'Category 1',
-            'Category 2',
-            'Category 3',
-            'Category 4',
-            'Category 5',
+            'NON FOOD',
+            'Food items',
+            'Production',
+            'ZNon Food',
+            'Packaging',
         ],
 
         'units' => [
-            'Unit 1',
-            'Unit 2',
-            'Unit 3',
-            'Unit 4',
-            'Unit 5',
-
+            'Grams',
+            'ML',
+            'Pcs',
         ],
     ],
 
 
 ];
-

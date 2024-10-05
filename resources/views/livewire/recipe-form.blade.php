@@ -10,14 +10,6 @@
             <form wire:submit="save">
                 <div class="grid grid-cols-6 gap-5">
 
-                    <!-- Code -->
-                    <div class="col-span-3">
-                        <x-input-label for="code" :value="__('Code')" />
-                        <x-text-input wire:model="form.code" id="code" class="block mt-1 w-full" type="text"
-                            name="code" autofocus autocomplete="new-code" />
-                        <x-input-error :messages="$errors->get('form.code')" class="mt-2" />
-                    </div>
-
                     <!-- Name -->
                     <div class="col-span-3">
                         <x-input-label for="name" :value="__('Name')" />
@@ -27,18 +19,26 @@
                     </div>
 
                     <!-- Unit -->
-                    <div class="col-span-2">
+                    <div class="col-span-full md:col-span-2">
                         <x-input-label for="unit" :value="__('Unit')" />
-                        <x-text-input wire:model="form.unit" id="unit" class="block mt-1 w-full" type="text"
-                            name="unit" required autocomplete="current-unit" />
+                        <x-select required wire:model="form.unit" id="unit" class="block mt-1 w-full">
+                            <option value="">---</option>
+                            @foreach (config('constants.recipes.units') as $unit)
+                                <option value="{{ $unit }}">{{ $unit }}</option>
+                            @endforeach
+                        </x-select>
                         <x-input-error :messages="$errors->get('form.unit')" class="mt-2" />
                     </div>
 
                     <!-- Category -->
                     <div class="col-span-2">
                         <x-input-label for="category" :value="__('Category')" />
-                        <x-text-input wire:model="form.category" id="category" class="block mt-1 w-full" type="text"
-                            name="category" required autocomplete="current-category" />
+                        <x-select required wire:model="form.category" id="category" class="block mt-1 w-full">
+                            <option value="">---</option>
+                            @foreach (config('constants.recipes.categories') as $category)
+                                <option value="{{ $category }}">{{ $category }}</option>
+                            @endforeach
+                        </x-select>
                         <x-input-error :messages="$errors->get('form.category')" class="mt-2" />
                     </div>
 

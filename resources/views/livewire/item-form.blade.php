@@ -7,16 +7,10 @@
 <div>
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900">
+
+
             <form wire:submit="save">
                 <div class="grid grid-cols-1 md:grid-cols-6 gap-5">
-
-                    <!-- Code -->
-                    <div class=" col-span-full md:col-span-3">
-                        <x-input-label for="code" :value="__('Code')" />
-                        <x-text-input wire:model="form.code" id="code" class="block mt-1 w-full" type="text"
-                            name="code" autofocus required autocomplete="new-code" />
-                        <x-input-error :messages="$errors->get('form.code')" class="mt-2" />
-                    </div>
 
                     <!-- Name -->
                     <div class="col-span-full md:col-span-3">
@@ -29,24 +23,36 @@
                     <!-- Unit -->
                     <div class="col-span-full md:col-span-2">
                         <x-input-label for="unit" :value="__('Unit')" />
-                        <x-text-input wire:model="form.unit" id="unit" class="block mt-1 w-full" type="text"
-                            name="unit" required autocomplete="current-unit" />
+                        <x-select required wire:model="form.unit" id="unit" class="block mt-1 w-full">
+                            <option disabled value="">---</option>
+                            @foreach (config('constants.items.units') as $unit)
+                                <option value="{{ $unit }}">{{ $unit }}</option>
+                            @endforeach
+                        </x-select>
                         <x-input-error :messages="$errors->get('form.unit')" class="mt-2" />
                     </div>
 
                     <!-- Category -->
                     <div class="col-span-full md:col-span-2">
                         <x-input-label for="category" :value="__('Category')" />
-                        <x-text-input wire:model="form.category" id="category" class="block mt-1 w-full" type="text"
-                            name="category" required autocomplete="current-category" />
+                        <x-select required wire:model="form.category" id="category" class="block mt-1 w-full">
+                            <option disabled value="">---</option>
+                            @foreach (config('constants.items.categories') as $category)
+                                <option value="{{ $category }}">{{ $category }}</option>
+                            @endforeach
+                        </x-select>
                         <x-input-error :messages="$errors->get('form.category')" class="mt-2" />
                     </div>
 
                     <!-- Supplier -->
                     <div class="col-span-full md:col-span-2">
                         <x-input-label for="supplier" :value="__('Supplier')" />
-                        <x-text-input wire:model="form.supplier" id="supplier" class="block mt-1 w-full" type="text"
-                            name="supplier" autocomplete="current-supplier" />
+                        <x-select wire:model="form.supplier" id="supplier" class="block mt-1 w-full">
+                            <option value="">---</option>
+                            @foreach (config('constants.suppliers') as $supplier)
+                                <option value="{{ $supplier }}">{{ $supplier }}</option>
+                            @endforeach
+                        </x-select>
                         <x-input-error :messages="$errors->get('form.supplier')" class="mt-2" />
                     </div>
 

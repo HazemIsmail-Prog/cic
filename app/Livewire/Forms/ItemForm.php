@@ -9,21 +9,23 @@ use Livewire\Form;
 class ItemForm extends Form
 {
     public $id;
-    public string $code = '';
     public string $name = '';
     public string $unit = '';
     public string $category = '';
     public string $supplier = '';
     public float $cost = 0;
 
-    protected $rules = [
-        'code' => 'required|string|max:255',
-        'name' => 'required|string|max:255',
-        'unit' => 'required|string|max:255',
-        'category' => 'required|string|max:255',
-        'supplier' => 'nullable|string|max:255',
-        'cost' => 'required|numeric',
-    ];
+    public function rules()
+    {
+        return  [
+            'name' => ['required', 'string', 'max:255', 'unique:items,name,' . $this->id],
+            'unit' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'supplier' => 'nullable|string|max:255',
+            'cost' => 'required|numeric',
+        ];
+    }
+
 
     public function save()
     {

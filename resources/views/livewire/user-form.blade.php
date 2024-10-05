@@ -18,7 +18,7 @@
                         <x-input-error :messages="$errors->get('form.name')" class="mt-2" />
                     </div>
 
-                    <!-- Name -->
+                    <!-- Email -->
                     <div class="col-span-full md:col-span-3">
                         <x-input-label for="email" :value="__('Email')" />
                         <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email"
@@ -29,8 +29,12 @@
                     <!-- Role -->
                     <div class="col-span-full md:col-span-2">
                         <x-input-label for="role" :value="__('Role')" />
-                        <x-text-input wire:model="form.role" id="role" class="block mt-1 w-full" type="text"
-                            name="role" required autocomplete="current-role" />
+                        <x-select required wire:model="form.role" id="role" class="block mt-1 w-full">
+                            <option disabled value="">---</option>
+                            @foreach (config('constants.users.roles') as $role)
+                                <option value="{{ $role }}">{{ $role }}</option>
+                            @endforeach
+                        </x-select>
                         <x-input-error :messages="$errors->get('form.role')" class="mt-2" />
                     </div>
 

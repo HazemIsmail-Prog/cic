@@ -22,7 +22,7 @@ class ItemIndex extends Component
             ->when($this->search, function (Builder $q) {
                 $q->whereAny(
                     [
-                        'code',
+                        'id',
                         'name',
                         'category',
                         'supplier',

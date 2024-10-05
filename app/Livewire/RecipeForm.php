@@ -23,7 +23,6 @@ class RecipeForm extends Component
             $this->recipe = Recipe::find($recipe->id);
             $this->title = 'Edit Recipe - ' . $this->recipe->name;
             $this->form->id = $this->recipe->id;
-            $this->form->code = $this->recipe->code;
             $this->form->name = $this->recipe->name;
             $this->form->unit = $this->recipe->unit;
             $this->form->category = $this->recipe->category;

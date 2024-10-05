@@ -34,7 +34,7 @@
                         <div class="py-2">
                             <div class="text-sm flex items-center justify-between">
                                 <p>Code</p>
-                                <p class=" font-bold">{{ $recipe->code }}</p>
+                                <p class=" font-bold">{{ $recipe->id }}</p>
                             </div>
                             <div class="text-sm flex items-center justify-between">
                                 <p>Category</p>

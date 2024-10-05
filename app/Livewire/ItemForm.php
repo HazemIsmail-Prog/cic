@@ -20,7 +20,6 @@ class ItemForm extends Component
             $this->item = Item::find($item->id);
             $this->title = 'Edit Item - ' . $this->item->name;
             $this->form->id = $this->item->id;
-            $this->form->code = $this->item->code;
             $this->form->name = $this->item->name;
             $this->form->unit = $this->item->unit;
             $this->form->cost = $this->item->cost;

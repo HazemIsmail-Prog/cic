@@ -10,23 +10,24 @@ use Livewire\Form;
 class RecipeForm extends Form
 {
     public $id;
-    public string $code = '';
     public string $name = '';
     public string $unit = '';
     public string $category = '';
     public float $production_quantity = 0;
     public $ingredients = [];
 
-    protected $rules = [
-        'code' => 'required|string|max:255',
-        'name' => 'required|string|max:255',
-        'unit' => 'required|string|max:255',
-        'category' => 'required|string|max:255',
-        'production_quantity' => 'required|numeric|min:0',
-        'ingredients' => 'required|array|min:1', // Make sure at least one ingredient is provided
-        'ingredients.*.name' => 'required|string|max:255',
-        'ingredients.*.quantity' => 'required|numeric|min:0', // Example rule for ingredient fields
-    ];
+    public function rules()
+    {
+        return [
+            'name' => ['required', 'string', 'max:255', 'unique:recipes,name,' . $this->id],
+            'unit' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'production_quantity' => 'required|numeric|min:0',
+            'ingredients' => 'required|array|min:1', // Make sure at least one ingredient is provided
+            'ingredients.*.name' => 'required|string|max:255',
+            'ingredients.*.quantity' => 'required|numeric|min:0', // Example rule for ingredient fields
+        ];
+    }
 
     public function save()
     {

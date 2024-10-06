@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Events\ItemsUpdatedEvent;
 use App\Models\Item;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -31,7 +32,9 @@ class ItemForm extends Form
     {
         $this->validate();
 
-        Item::updateOrCreate(['id' => $this->id], $this->all());
+        $item = Item::updateOrCreate(['id' => $this->id], $this->all());
+
+        broadcast(new ItemsUpdatedEvent($item));
 
         $this->reset();
     }

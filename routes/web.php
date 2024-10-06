@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\IsAdmin;
+use App\Events\Example;
 use App\Livewire\ItemForm;
 use App\Livewire\ItemIndex;
 use App\Livewire\RecipeForm;

@@ -79,16 +79,16 @@
                                     <x-text-input x-model="searchQuery" placeholder="Search..."
                                         class="block mt-1 w-full" type="text" />
 
-                                    <div class="h-96 overflow-y-auto p-2">
+                                    <div class="h-96 overflow-y-auto p-2 divide-y">
                                         <template x-for="item in filteredItems" :key="item.id">
-                                            <div class="flex items-center mb-2 border-b">
+                                            <div class="flex items-center hover:bg-indigo-100 ps-2">
                                                 <input type="checkbox" @change="toggleItem(item)"
                                                     x-bind:checked="selectedIngredients.some(ingredient => ingredient.id === item
                                                         .id)"
                                                     x-bind:id="'check-' + item.id"
                                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                                                 <label :for="'check-' + item.id"
-                                                    class="ms-2 font-medium text-gray-900 w-full">
+                                                    class="ms-2 font-medium text-gray-900 w-full cursor-pointer  py-1 ">
                                                     <div class="font-bold" x-text="item.name"></div>
                                                     <div class="text-xs font-extralight" x-text="item.unit"></div>
                                                 </label>

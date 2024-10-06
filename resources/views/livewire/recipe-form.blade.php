@@ -79,7 +79,7 @@
                                     <x-text-input x-model="searchQuery" placeholder="Search..."
                                         class="block mt-1 w-full" type="text" />
 
-                                    <div class="h-96 overflow-y-auto p-2 divide-y">
+                                    <div class=" h-80 overflow-y-auto p-2 divide-y">
                                         <template x-for="item in filteredItems" :key="item.id">
                                             <div class="flex items-center hover:bg-indigo-100 ps-2">
                                                 <input type="checkbox" @change="toggleItem(item)"

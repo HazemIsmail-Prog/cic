@@ -8,10 +8,10 @@
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900">
             <form wire:submit="save">
-                <div class="grid grid-cols-1 md:grid-cols-6 gap-5">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
 
                     <!-- Name -->
-                    <div class=" col-span-full md:col-span-3">
+                    <div class=" col-span-full md:col-span-1">
                         <x-input-label for="name" :value="__('Name')" />
                         <x-text-input wire:model="form.name" id="name" class="block mt-1 w-full" type="text"
                             autofocus required autocomplete="new-name" />
@@ -19,7 +19,7 @@
                     </div>
 
                     <!-- Email -->
-                    <div class="col-span-full md:col-span-3">
+                    <div class="col-span-full md:col-span-1">
                         <x-input-label for="email" :value="__('Email')" />
                         <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email"
                             required autocomplete="current-email" />
@@ -27,7 +27,7 @@
                     </div>
 
                     <!-- Role -->
-                    <div class="col-span-full md:col-span-2">
+                    <div class="col-span-full md:col-span-1">
                         <x-input-label for="role" :value="__('Role')" />
                         <x-select required wire:model="form.role" id="role" class="block mt-1 w-full">
                             <option disabled value="">---</option>
@@ -40,7 +40,7 @@
 
                     <!-- Password -->
                     @if (!$form->id)
-                        <div class="col-span-full md:col-span-2">
+                        <div class="col-span-full md:col-span-1">
                             <x-input-label for="password" :value="__('Password')" />
                             <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full"
                                 type="password" required autocomplete="new-password" />

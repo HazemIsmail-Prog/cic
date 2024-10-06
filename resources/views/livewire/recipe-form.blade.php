@@ -22,7 +22,7 @@
                     <div class="col-span-full md:col-span-2">
                         <x-input-label for="category" :value="__('Category')" />
                         <x-select required wire:model="form.category" id="category" class="block mt-1 w-full">
-                            <option value="">---</option>
+                            <option disabled value="">---</option>
                             @foreach (config('constants.recipes.categories') as $category)
                                 <option value="{{ $category }}">{{ $category }}</option>
                             @endforeach
@@ -43,7 +43,7 @@
                     <div class="col-span-1 md:col-span-1">
                         <x-input-label for="unit" :value="__('Unit')" />
                         <x-select required wire:model="form.unit" id="unit" class="block mt-1 w-full">
-                            <option value="">---</option>
+                            <option disabled value="">---</option>
                             @foreach (config('constants.recipes.units') as $unit)
                                 <option value="{{ $unit }}">{{ $unit }}</option>
                             @endforeach

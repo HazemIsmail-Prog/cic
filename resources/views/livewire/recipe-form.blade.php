@@ -8,30 +8,18 @@
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900">
             <form wire:submit="save">
-                <div class="grid grid-cols-6 gap-5">
+                <div class="grid grid-cols-2 md:grid-cols-7 items-end gap-2">
 
                     <!-- Name -->
-                    <div class="col-span-3">
+                    <div class="col-span-full md:col-span-3">
                         <x-input-label for="name" :value="__('Name')" />
                         <x-text-input wire:model="form.name" id="name" class="block mt-1 w-full" type="text"
                             name="name" required autocomplete="current-name" />
                         <x-input-error :messages="$errors->get('form.name')" class="mt-2" />
                     </div>
 
-                    <!-- Unit -->
-                    <div class="col-span-full md:col-span-2">
-                        <x-input-label for="unit" :value="__('Unit')" />
-                        <x-select required wire:model="form.unit" id="unit" class="block mt-1 w-full">
-                            <option value="">---</option>
-                            @foreach (config('constants.recipes.units') as $unit)
-                                <option value="{{ $unit }}">{{ $unit }}</option>
-                            @endforeach
-                        </x-select>
-                        <x-input-error :messages="$errors->get('form.unit')" class="mt-2" />
-                    </div>
-
                     <!-- Category -->
-                    <div class="col-span-2">
+                    <div class="col-span-full md:col-span-2">
                         <x-input-label for="category" :value="__('Category')" />
                         <x-select required wire:model="form.category" id="category" class="block mt-1 w-full">
                             <option value="">---</option>
@@ -43,12 +31,24 @@
                     </div>
 
                     <!-- Production Quantity -->
-                    <div class="col-span-2">
+                    <div class="col-span-1 md:col-span-1">
                         <x-input-label for="production_quantity" :value="__('Production Quantity')" />
                         <x-text-input wire:model="form.production_quantity" id="production_quantity"
                             class="block mt-1 w-full" type="number" name="production_quantity" required
                             autocomplete="current-production_quantity" />
                         <x-input-error :messages="$errors->get('form.production_quantity')" class="mt-2" />
+                    </div>
+
+                    <!-- Unit -->
+                    <div class="col-span-1 md:col-span-1">
+                        <x-input-label for="unit" :value="__('Unit')" />
+                        <x-select required wire:model="form.unit" id="unit" class="block mt-1 w-full">
+                            <option value="">---</option>
+                            @foreach (config('constants.recipes.units') as $unit)
+                                <option value="{{ $unit }}">{{ $unit }}</option>
+                            @endforeach
+                        </x-select>
+                        <x-input-error :messages="$errors->get('form.unit')" class="mt-2" />
                     </div>
 
                     <!-- Ingredients -->
@@ -79,7 +79,7 @@
                                     <x-text-input x-model="searchQuery" placeholder="Search..."
                                         class="block mt-1 w-full" type="text" />
 
-                                    <div class=" h-80 overflow-y-auto p-2 divide-y">
+                                    <div class=" h-96 overflow-y-auto p-2 divide-y">
                                         <template x-for="item in filteredItems" :key="item.id">
                                             <div class="flex items-center hover:bg-indigo-100 ps-2">
                                                 <input type="checkbox" @change="toggleItem(item)"

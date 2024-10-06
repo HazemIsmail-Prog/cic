@@ -62,10 +62,10 @@
 
                                 <div class="md:w-2/3 space-y-1">
                                     <template x-for="(ingredient, index) in selectedIngredients" :key="index">
-                                        <div class="border p-3 rounded-lg flex items-center justify-between gap-2">
+                                        <div class="border p-3 rounded-lg flex items-center justify-between gap-3">
                                             <!-- Delete Button -->
                                             <button type="button" @click="removeIngredient(index)"
-                                                class="text-red-600 hover:text-red-800">
+                                                class="text-red-600 hover:text-red-800 text-xs">
                                                 &#x2716; <!-- This is a cross symbol (X) for the delete icon -->
                                             </button>
                                             <div class=" flex-1">

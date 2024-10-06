@@ -6,7 +6,7 @@
 
 <div x-data="recipeForm()">
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 text-gray-900">
+        <div class="p-2 md:p-6 text-gray-900">
             <form wire:submit="save">
                 <div class="grid grid-cols-2 md:grid-cols-7 items-end gap-2">
 
@@ -57,24 +57,30 @@
                         <x-input-error :messages="$errors->get('form.ingredients')" class="mt-2" />
 
 
-                        <div class="p-5 border rounded-lg">
-                            <div class="flex items-start gap-3">
+                        <div class="p-2 md:p-5 border rounded-lg">
+                            <div class="md:flex items-start gap-3">
 
-                                <div class="w-2/3 space-y-1">
+                                <div class="md:w-2/3 space-y-1">
                                     <template x-for="(ingredient, index) in selectedIngredients" :key="index">
-                                        <div class="border p-3 rounded-lg flex items-center justify-between">
-                                            <div>
+                                        <div class="border p-3 rounded-lg flex items-center justify-between gap-2">
+                                            <!-- Delete Button -->
+                                            <button type="button" @click="removeIngredient(index)"
+                                                class="text-red-600 hover:text-red-800">
+                                                &#x2716; <!-- This is a cross symbol (X) for the delete icon -->
+                                            </button>
+                                            <div class=" flex-1">
                                                 <div x-text="ingredient.name"></div>
                                                 <div class="text-xs font-extralight" x-text="ingredient.unit"></div>
                                             </div>
                                             <x-text-input placeholder="Quantity" x-model="ingredient.quantity"
-                                                class="block mt-1 w-1/2" type="number" step="0.01" required />
+                                                type="number" step="0.01" required />
+
                                         </div>
                                     </template>
                                 </div>
 
                                 <!-- Item Search & Select -->
-                                <div class="border w-1/3 p-2 rounded-lg shadow-xl">
+                                <div class="border md:w-1/3 mt-2 md:mt-0 p-2 rounded-lg shadow-xl">
                                     <!-- Search Input -->
                                     <x-text-input x-model="searchQuery" placeholder="Search..."
                                         class="block mt-1 w-full" type="text" />
@@ -142,7 +148,12 @@
                         quantity: ''
                     });
                 }
-            }
+            },
+
+            // Remove ingredient by index
+            removeIngredient(index) {
+                this.selectedIngredients.splice(index, 1);
+            },
         };
     }
 </script>

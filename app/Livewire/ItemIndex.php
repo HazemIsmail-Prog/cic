@@ -2,11 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Events\ItemsUpdatedEvent;
 use App\Models\Item;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -18,8 +16,6 @@ class ItemIndex extends Component
     public string $search = '';
 
     #[Computed()]
-    #[On('echo:items,ItemsUpdatedEvent')]
-
     public function items()
     {
         return Item::query()
@@ -46,8 +42,6 @@ class ItemIndex extends Component
     public function delete(Item $item)
     {
         $item->delete();
-        broadcast(new ItemsUpdatedEvent($item));
-
     }
 
     public function render()
